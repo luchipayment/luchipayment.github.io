@@ -1,0 +1,460 @@
+jQuery.noConflict();
+(function ($) {
+    $(function () {
+        let w_h = $(window).height();
+
+        let $menuBlock = $('#menu');
+
+        $('.menu-btn').click(function () {
+            $(this).toggleClass('active');
+            $menuBlock.toggleClass('active');
+
+        });
+
+
+        jq_animate();
+        parallax_images();
+        if ($('.float-image').length) {
+            floating_images();
+        }
+
+        $(window).resize(function () {
+            jq_animate();
+            if ($('.float-image').length) {
+                floating_images();
+            }
+        });
+        window.addEventListener("scroll", function () {
+            jq_animate();
+            transformMenu();
+            parallax_images();
+            if ($('.float-image').length) {
+                floating_images();
+            }
+            if ($('.float-col').length) {
+                floating_cols();
+            }
+
+            if ($('.red-block').length) {
+                transformRedBlock();
+
+            }
+
+        });
+
+        function parallax_images() {
+            let w_p = $(window).scrollTop() - 50;
+            w_h = $(window).height();
+            if ($('.parallax-image').length) {
+                $('.parallax-image').each(function () {
+                    let p_p = $(this).offset().top;
+                    let p_h = $(this).outerHeight();
+                    let y_bg_pos = (-(w_p + w_h / 2) + (p_p + 300 / 2)) * (300 / (w_h * 6)) + 50 + '%';
+                    $(this).animate({
+                        'background-position-x': '50%',
+                        'background-position-y': y_bg_pos
+                    }, 0);
+                });
+            }
+
+        }
+
+        function jq_animate() {
+            $('.jq_animate').each(function () {
+                let scroll_pos = window.pageYOffset;
+                let o_h = $(this).outerHeight();
+                if ($(this).offset().top > scroll_pos + $(window).height()) {
+                    $(this).removeClass('jq_active jq_hide_top').addClass('jq_hide_bottom');
+                }
+                if ($(this).offset().top < scroll_pos + $(window).height() && $(this).offset().top + o_h > scroll_pos) {
+                    $(this).removeClass('jq_hide_bottom jq_hide_top').addClass('jq_active');
+                }
+                if ($(this).offset().top + o_h < scroll_pos) {
+                    $(this).removeClass('jq_active jq_hide_bottom').addClass('jq_hide_top');
+                }
+            });
+        }
+
+        transformMenu();
+
+        function transformMenu() {
+            let w_pos_y = window.pageYOffset;
+            if (w_pos_y > 80) {
+                $menuBlock.addClass('changed');
+            } else {
+                $menuBlock.removeClass('changed');
+            }
+        }
+
+        if ($('.red-block').length) {
+
+            function transformRedBlock() {
+                let w_pos_y = window.pageYOffset;
+                if (w_pos_y > 80) {
+                    $('.red-block').addClass('changed');
+                } else {
+                    $('.red-block').removeClass('changed');
+                }
+            }
+
+            transformRedBlock();
+
+        }
+
+        $('.scroll-btn').click(function () {
+            let scroll_pos = $('.top-block').height();
+            $('html, body').animate({
+                scrollTop: scroll_pos,
+            }, 1000);
+
+        });
+
+        $('.h-soc-btn').click(function (event) {
+            event.stopPropagation();
+            $('.socials-list').slideToggle();
+        });
+        $(document).click(function (event) {
+            w_w = $(window).width();
+
+            if (w_w > 960) {
+                event.stopPropagation();
+                $('.socials-list').slideUp();
+            }
+        });
+
+
+        if ($('#streamers_slider').length) {
+            let $streamers_slider = tns({
+                container: '#streamers_slider',
+                slideBy: 1,
+                items: 1,
+                // gutter: 30,
+                autoWidth: true,
+                nav: false,
+                autoHeight: true,
+                // autoplay: true,
+                // autoplayButton: false,
+                // autoplayButtonOutput: false,
+                // autoplayTimeout: 3000,
+                prevButton: '.streamers-slider .prev',
+                nextButton: '.streamers-slider .next',
+                responsive: {
+                    "1200": {
+                        "items": 3
+                    },
+                    "601": {
+                        "items": 2,
+                        "autoHeight": false
+
+                    },
+                },
+
+            });
+        }
+
+        if ($('#success_slider').length) {
+            let $success_slider = tns({
+                container: '#success_slider',
+                slideBy: 1,
+                items: 1,
+                gutter: 20,
+                // autoWidth: true,
+                // center: true,
+                loop: false,
+                nav: false,
+                prevButton: '#success_slider_wrapper .prev',
+                nextButton: '#success_slider_wrapper .next',
+                responsive: {
+                    "1200": {
+                        "items": 3
+                    },
+                    "601": {
+                        "items": 2
+                    },
+                },
+
+            });
+        }
+
+        if ($('#events_slider').length) {
+            let $events_slider = tns({
+                container: '#events_slider',
+                slideBy: 1,
+                items: 1,
+                gutter: 20,
+                // autoWidth: true,
+                // center: true,
+                loop: false,
+                nav: false,
+                prevButton: '#events_slider_wrapper .prev',
+                nextButton: '#events_slider_wrapper .next',
+                responsive: {
+                    "1200": {
+                        "items": 3
+                    },
+                    "601": {
+                        "items": 2
+                    },
+                },
+
+            });
+        }
+
+        if ($('#translations_slider').length) {
+            let $translations_slider = tns({
+                container: '#translations_slider',
+                slideBy: 1,
+                items: 1,
+                gutter: 100,
+                // autoWidth: true,
+                // center: true,
+                loop: false,
+                nav: false,
+                prevButton: '.translations-slider .prev',
+                nextButton: '.translations-slider .next',
+                responsive: {
+                    "960": {
+                        "items": 2
+                    },
+                },
+
+            });
+        }
+
+        if ($('#success_image_slider').length) {
+            let $success_image_slider = tns({
+                container: '#success_image_slider',
+                slideBy: 1,
+                items: 1,
+                gutter: 20,
+                // autoWidth: true,
+                // center: true,
+                loop: false,
+                nav: false,
+                prevButton: '.success-image-slider .prev',
+                nextButton: '.success-image-slider .next',
+                responsive: {
+                    "1200": {
+                        "items": 3
+                    },
+                    "680": {
+                        "items": 2
+                    },
+                },
+
+            });
+        }
+
+        if ($('#support_streamers_slider').length) {
+            let $support_streamers_slider = tns({
+                container: '#support_streamers_slider',
+                slideBy: 1,
+                items: 1,
+                gutter: 20,
+                // autoWidth: true,
+                // center: true,
+                loop: false,
+                nav: false,
+                prevButton: '.support-streamers-slider .prev',
+                nextButton: '.support-streamers-slider .next',
+            });
+        }
+
+
+        $('.add-more-links').click(function () {
+            $('.files-links-container').append('<input type="text" class="custom-input" placeholder="Вставьте ссылку">');
+        });
+
+
+        let files_compiled = 0;
+        $('.pre-submit-btn').click(function (event) {
+            if (!files_compiled) {
+                let files_str = '';
+
+                $('.files-links-container').find('.custom-input').each(function () {
+                    let file_link = $(this).val();
+                    files_str = files_str + ' ' + file_link;
+                });
+
+                $('#requests-link').val(files_str);
+                files_compiled = 1;
+                $('.jq_submit_btn').click();
+            }
+        });
+
+
+        $('.acc-head').click(function (event) {
+            event.stopPropagation();
+            let $accordeon = $(this).parent();
+
+
+            if (!$accordeon.hasClass('active')) {
+                $('.acc-block').removeClass('active');
+                $('.acc-body').slideUp('slow');
+                $accordeon.addClass('active');
+                $accordeon.find('.acc-body').slideDown('slow');
+            } else {
+                $('.acc-block').removeClass('active');
+                $('.acc-body').slideUp('slow');
+
+            }
+
+        });
+
+        if ($('.page.index').length) {
+            $('.faq-btn').addClass('invisible');
+        }
+
+        $('.donate-btn').click(function () {
+
+            let val = $(this).data('value');
+
+            $('#payform-sum').val(val);
+        });
+
+        if ($('.pay-page').length) {
+
+
+            let $info_block = $('.pay-data');
+
+            let failUrl = $info_block.data('failUrl');
+            let multiple = $info_block.data('multiple');
+            let publicId = $info_block.data('publicid');
+            let description = $info_block.data('description');
+            let campaignId = $info_block.data('campaignid');
+            let name = $info_block.data('name');
+            let last = $info_block.data('last');
+            let email = $info_block.data('email');
+            let sum = $info_block.data('price');
+            let type = $info_block.data('type');
+            let cloud_payment_id = $info_block.data('cloudpaymentid');
+
+            function pay() {
+          
+
+                var widget = new cp.CloudPayments();
+
+                var data = { //данные дарителя
+                    campaignId: campaignId,
+                    name: name,
+                    lastName: last,
+                    phone: '',
+                    cloud_payment_id: cloud_payment_id
+                };
+
+
+                if (multiple) {
+                    data.cloudPayments = {recurrent: {interval: 'Month', period: 1}}; //создание ежемесячной подписки
+                }
+
+                widget.charge({ // options
+                        publicId: publicId, //id из личного кабинета
+                        description: description, //назначение
+                        amount: sum, //сумма
+                        currency: 'RUB', //валюта
+                        accountId: email, //идентификатор плательщика (обязательно для создания подписки)
+                        data: data
+                    },
+                    function (options) { // success
+                        var token = $('meta[name="csrf-token"]').attr("content");
+                        var formData = {
+                            '_csrf-frontend': token,
+                            campaignId: campaignId,
+                            sum: sum,
+                            email: email,
+                            lastName: last,
+                            name: name,
+                            type: type,
+                            cloud_payment_id:cloud_payment_id,
+                            multiple: multiple,
+                        };
+                        var form = document.createElement('form');
+                        form.style.display = 'none';
+                        form.method = 'POST';
+                        form.action = '/end-payment';
+                        var submit = document.createElement('button');
+                        form.appendChild(submit);
+                        for (var field in formData) {
+                            var el = document.createElement('input');
+                            el.name = field;
+                            el.value = formData[field];
+                            form.appendChild(el);
+                        }
+                        document.body.appendChild(form);
+                        form.submit();
+                    },
+                    function (reason, options) { // fail
+                        window.location.replace("/fail-payment");
+                    });
+                // widget.close(function (){
+                //     window.location.replace("/fail-payment");
+                // });
+            }
+            
+            var token = $('meta[name="csrf-token"]').attr("content");
+            var formData = {
+                '_csrf-frontend': token,
+                campaignId: campaignId,
+                sum: sum,
+                email: email,
+                lastName: last,
+                name: name,
+                type: type,
+                cloud_payment_id:cloud_payment_id,
+                multiple: multiple,
+            };
+            
+            var queryString = Object.keys(formData).map(function(key) {
+                return key + '=' + formData[key]
+            }).join('&');
+
+            const headers = {
+                'Content-Type':'application/json'
+            }
+            fetch('/add-payment-record?' + queryString, {
+                        method:'GET',
+                        headers: headers
+            }).then((response) => {                                
+                return response.text();                
+            }).then((data) => {
+                console.log(data);
+                pay();
+            })
+            //pay();
+        }
+
+
+        // $('.pay-btn').on('click', function () {
+        //     let action = $(this).data('action');
+        //     $('#payForm').attr('action', action);
+        //     $('#payForm').submit();
+        // });
+
+        if ($('.page.faq').length) {
+            $('.faq-btn').addClass('hidden');
+        }
+
+    });
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
