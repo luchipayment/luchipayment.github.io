@@ -612,15 +612,15 @@ HKO Благотворительный фонд «Лучи сердца»<br>
     </div>
 </div>
 
-<script src="./Поанию_files/jquery.js.загружено"></script>
-<script src="./Поанию_files/yii.js.загружено"></script>
-<script src="./Поанию_files/yii.validation.js.загружено"></script>
-<script src="./Поанию_files/yii.activeForm.js.загружено"></script>
-<script src="./Поанию_files/es5-shims.min.js.загружено"></script>
-<script src="./Поанию_files/share.js.загружено"></script>
-<script src="./Поанию_files/cloudpayments"></script>
-<script src="./Поанию_files/tiny-slider.js.загружено"></script>
-<script src="./Поанию_files/script.js.загружено"></script>
+<script src="jquery.js.загружено"></script>
+<script src="yii.js.загружено"></script>
+<script src="yii.validation.js.загружено"></script>
+<script src="yii.activeForm.js.загружено"></script>
+<script src="es5-shims.min.js.загружено"></script>
+<script src="share.js.загружено"></script>
+<script src="cloudpayments"></script>
+<script src="tiny-slider.js.загружено"></script>
+<script src="script.js.загружено"></script>
 <script>jQuery(function ($) {
 jQuery('#payForm').yiiActiveForm([{"id":"payform-sum","name":"sum","container":".field-payform-sum","input":"#payform-sum","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо заполнить «Сумма»."});yii.validation.number(value, messages, {"pattern":/^\s*[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?\s*$/,"message":"Значение «Сумма» должно быть числом.","min":100,"tooSmall":"Значение «Сумма» должно быть не меньше 100.","skipOnEmpty":1});}},{"id":"payform-name","name":"name","container":".field-payform-name","input":"#payform-name","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо заполнить «Имя»."});yii.validation.string(value, messages, {"message":"Значение «Имя» должно быть строкой.","max":255,"tooLong":"Значение «Имя» должно содержать максимум 255 символов.","skipOnEmpty":1});}},{"id":"payform-lastname","name":"lastName","container":".field-payform-lastname","input":"#payform-lastname","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо заполнить «Фамилия»."});}},{"id":"payform-email","name":"email","container":".field-payform-email","input":"#payform-email","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо заполнить «E-mail»."});yii.validation.string(value, messages, {"message":"Значение «E-mail» должно быть строкой.","max":255,"tooLong":"Значение «E-mail» должно содержать максимум 255 символов.","skipOnEmpty":1});yii.validation.email(value, messages, {"pattern":/^[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,"fullPattern":/^[^@]*<[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/,"allowName":false,"message":"Значение «E-mail» не является правильным email адресом.","enableIDN":false,"skipOnEmpty":1});}},{"id":"payform-campaignid","name":"campaignId","container":".field-payform-campaignid","input":"#payform-campaignid","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.number(value, messages, {"pattern":/^\s*[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?\s*$/,"message":"Значение «Campaign Id» должно быть числом.","skipOnEmpty":1});}},{"id":"payform-offer_checkbox","name":"offer_checkbox","container":".field-payform-offer_checkbox","input":"#payform-offer_checkbox","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо ваше согласие","requiredValue":1});}},{"id":"payform-data_collection_checkbox","name":"data_collection_checkbox","container":".field-payform-data_collection_checkbox","input":"#payform-data_collection_checkbox","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необходимо ваше согласие","requiredValue":1});}}], []);
 });</script>
